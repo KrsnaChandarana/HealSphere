@@ -1,6 +1,6 @@
 # healsphere
 
-A new Flutter project.
+A **Cancer Support** App.
 
 ## Getting Started
 
