@@ -1,0 +1,308 @@
+{
+  "awareness": {
+    "carousel": {
+      "news1": {
+        "id": "news1",
+        "title": "Breakthrough in Cancer Treatment Research",
+        "description": "Scientists discover new immunotherapy approach that shows promising results in clinical trials.",
+        "link": "https://example.com/news1",
+        "imageUrl": "https://example.com/images/news1.jpg",
+        "timestamp": 1704067200000
+      },
+      "news2": {
+        "id": "news2",
+        "title": "Early Detection Saves Lives",
+        "description": "New screening technology improves early cancer detection rates by 40%.",
+        "link": "https://example.com/news2",
+        "imageUrl": "https://example.com/images/news2.jpg",
+        "timestamp": 1704153600000
+      },
+      "news3": {
+        "id": "news3",
+        "title": "Support Groups Show Positive Impact",
+        "description": "Study reveals emotional support significantly improves patient outcomes.",
+        "link": "https://example.com/news3",
+        "imageUrl": "https://example.com/images/news3.jpg",
+        "timestamp": 1704240000000
+      }
+    },
+    "education": {
+      "edu1": {
+        "id": "edu1",
+        "title": "Breast Cancer",
+        "short": "Most common cancer in women worldwide",
+        "details": "Symptoms: Lumps in breast, changes in breast shape or size, nipple discharge, skin changes. Treatment: Surgery, chemotherapy, radiation therapy, hormone therapy. Prevention: Regular mammograms, self-examinations, healthy lifestyle, limiting alcohol consumption.",
+        "moreLink": "https://www.who.int/health-topics/cancer"
+      },
+      "edu2": {
+        "id": "edu2",
+        "title": "Lung Cancer",
+        "short": "Leading cause of cancer deaths",
+        "details": "Symptoms: Persistent cough, chest pain, shortness of breath, coughing up blood, weight loss. Treatment: Surgery, chemotherapy, radiation, targeted therapy, immunotherapy. Prevention: Avoid smoking, limit exposure to radon and asbestos, healthy diet.",
+        "moreLink": "https://www.who.int/health-topics/cancer"
+      },
+      "edu3": {
+        "id": "edu3",
+        "title": "Colon Cancer",
+        "short": "Third most common cancer type",
+        "details": "Symptoms: Changes in bowel habits, blood in stool, abdominal pain, unexplained weight loss, fatigue. Treatment: Surgery, chemotherapy, radiation therapy. Prevention: Regular screenings (colonoscopy), high-fiber diet, limit red meat, exercise regularly.",
+        "moreLink": "https://www.who.int/health-topics/cancer"
+      }
+    },
+    "feed": {
+      "article1": {
+        "id": "article1",
+        "title": "Latest Research on Cancer Immunotherapy",
+        "description": "Recent studies show promising results in using the body's immune system to fight cancer cells.",
+        "link": "https://example.com/article1",
+        "imageUrl": "https://example.com/images/article1.jpg",
+        "timestamp": 1704326400000
+      },
+      "article2": {
+        "id": "article2",
+        "title": "Nutrition and Cancer Recovery",
+        "description": "How proper nutrition can support patients during treatment and recovery.",
+        "link": "https://example.com/article2",
+        "imageUrl": "https://example.com/images/article2.jpg",
+        "timestamp": 1704412800000
+      }
+    }
+  },
+  "users": {
+    "clinician1": {
+      "uid": "clinician1",
+      "name": "Dr. Sarah Johnson",
+      "email": "sarah.johnson@hospital.com",
+      "role": "clinician",
+      "phone": "+1234567890",
+      "createdAt": 1704067200000,
+      "updatedAt": 1704067200000
+    },
+    "patient1": {
+      "uid": "patient1",
+      "name": "Jane Doe",
+      "email": "jane.doe@email.com",
+      "role": "patient",
+      "phone": "+1987654321",
+      "linkedPatientId": "patient_record_1",
+      "createdAt": 1704067200000,
+      "updatedAt": 1704067200000
+    },
+    "caregiver1": {
+      "uid": "caregiver1",
+      "name": "John Doe",
+      "email": "john.doe@email.com",
+      "role": "caregiver",
+      "phone": "+1555555555",
+      "linkedPatientId": "patient_record_1",
+      "createdAt": 1704067200000,
+      "updatedAt": 1704067200000
+    }
+  },
+  "patients": {
+    "patient_record_1": {
+      "id": "patient_record_1",
+      "name": "Jane Doe",
+      "age": 45,
+      "gender": "Female",
+      "diagnosis": "Breast Cancer Stage 2",
+      "diagnosisDate": 1704067200000,
+      "conditionSummary": "Patient diagnosed with Stage 2 breast cancer. Currently undergoing chemotherapy treatment. Responding well to treatment.",
+      "photoUrl": "",
+      "clinicianId": "clinician1",
+      "caregiverId": "caregiver_record_1",
+      "caregiverUserUid": "caregiver1",
+      "patientUserUid": "patient1",
+      "needsFollowUp": false,
+      "followUpNote": "",
+      "followUpRequestedAt": null,
+      "doctorNotes": "Patient is responding well to treatment. Continue current medication regimen. Monitor for side effects.",
+      "progressSummary": "Good progress. Two chemo sessions completed. Next session scheduled for next week.",
+      "chemoHistory": {
+        "chemo1": {
+          "id": "chemo1",
+          "date": 1704153600000,
+          "completed": true,
+          "remarks": "First session completed successfully. Patient tolerated well.",
+          "notes": "No adverse reactions observed."
+        },
+        "chemo2": {
+          "id": "chemo2",
+          "date": 1704240000000,
+          "completed": true,
+          "remarks": "Second session completed. Minor fatigue reported.",
+          "notes": "Patient advised to rest and maintain hydration."
+        },
+        "chemo3": {
+          "id": "chemo3",
+          "date": 1704412800000,
+          "completed": false,
+          "remarks": "Scheduled for next week",
+          "notes": ""
+        }
+      },
+      "appointments": {
+        "app1": {
+          "id": "app1",
+          "datetime": 1704500000000,
+          "notes": "Follow-up consultation to review treatment progress",
+          "status": "scheduled",
+          "createdAt": 1704067200000
+        },
+        "app2": {
+          "id": "app2",
+          "datetime": 1704672000000,
+          "notes": "Pre-chemo checkup",
+          "status": "scheduled",
+          "createdAt": 1704153600000
+        }
+      },
+      "medicines": {
+        "med1": {
+          "id": "med1",
+          "name": "Tamoxifen",
+          "time": "Morning",
+          "frequency": "Daily",
+          "dosage": "20mg"
+        },
+        "med2": {
+          "id": "med2",
+          "name": "Pain Relief",
+          "time": "As needed",
+          "frequency": "PRN",
+          "dosage": "500mg"
+        }
+      },
+      "dailyLogs": {
+        "log_20240101": {
+          "id": "log_20240101",
+          "date": 1704067200000,
+          "eating": "Good",
+          "sleepHours": 7,
+          "feeling": "Calm",
+          "activities": ["Walk", "Read Book"]
+        },
+        "log_20240102": {
+          "id": "log_20240102",
+          "date": 1704153600000,
+          "eating": "Average",
+          "sleepHours": 6,
+          "feeling": "Tired",
+          "activities": ["Meditation", "Watch Movie"]
+        }
+      },
+      "activities": {
+        "act1": {
+          "id": "act1",
+          "description": "30 minute walk in the park",
+          "date": 1704067200000,
+          "createdBy": "caregiver1"
+        },
+        "act2": {
+          "id": "act2",
+          "description": "Read for 1 hour",
+          "date": 1704153600000,
+          "createdBy": "patient1"
+        }
+      },
+      "createdAt": 1704067200000,
+      "updatedAt": 1704240000000
+    }
+  },
+  "caregivers": {
+    "caregiver_record_1": {
+      "id": "caregiver_record_1",
+      "name": "John Doe",
+      "phone": "+1555555555",
+      "email": "john.doe@email.com",
+      "linkedPatientId": "patient_record_1",
+      "uid": "caregiver1",
+      "createdAt": 1704067200000,
+      "updatedAt": 1704067200000
+    }
+  },
+  "followUps": {
+    "clinician1": {
+      "followup1": {
+        "id": "followup1",
+        "patientId": "patient_record_1",
+        "patientName": "Jane Doe",
+        "note": "Experiencing increased fatigue after last chemo session. Would like to discuss adjusting medication.",
+        "requestedAt": 1704326400000,
+        "status": "pending",
+        "createdBy": "patient1"
+      }
+    }
+  },
+  "chats": {
+    "chat_clinician1_patient1": {
+      "id": "chat_clinician1_patient1",
+      "createdAt": 1704067200000,
+      "lastMessage": "How are you feeling today?",
+      "lastTimestamp": 1704326400000,
+      "participants": {
+        "clinician1": true,
+        "patient1": true
+      },
+      "messages": {
+        "msg1": {
+          "id": "msg1",
+          "senderId": "patient1",
+          "text": "Hello doctor, I have a question about my medication.",
+          "createdAt": 1704153600000,
+          "type": "text"
+        },
+        "msg2": {
+          "id": "msg2",
+          "senderId": "clinician1",
+          "text": "Hello! I'm here to help. What's your question?",
+          "createdAt": 1704153700000,
+          "type": "text"
+        },
+        "msg3": {
+          "id": "msg3",
+          "senderId": "patient1",
+          "text": "How are you feeling today?",
+          "createdAt": 1704326400000,
+          "type": "text"
+        }
+      }
+    }
+  },
+  "userChats": {
+    "clinician1": {
+      "chat_clinician1_patient1": {
+        "peerId": "patient1",
+        "peerName": "Jane Doe",
+        "lastMessage": "How are you feeling today?",
+        "lastTimestamp": 1704326400000
+      }
+    },
+    "patient1": {
+      "chat_clinician1_patient1": {
+        "peerId": "clinician1",
+        "peerName": "Dr. Sarah Johnson",
+        "lastMessage": "How are you feeling today?",
+        "lastTimestamp": 1704326400000
+      }
+    }
+  },
+  "bookmarks": {
+    "patient1": {
+      "news1": {
+        "savedAt": 1704153600000,
+        "title": "Breakthrough in Cancer Treatment Research",
+        "link": "https://example.com/news1",
+        "type": "news"
+      },
+      "edu1": {
+        "savedAt": 1704240000000,
+        "title": "Breast Cancer",
+        "link": "https://www.who.int/health-topics/cancer",
+        "type": "education"
+      }
+    }
+  }
+}
+
+

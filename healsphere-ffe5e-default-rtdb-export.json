@@ -1,0 +1,183 @@
+{
+  "awareness": {
+    "carousel": {
+      "c1": {
+        "description": "The rarest element on Earth could revolutionize cancer treatment",
+        "id": "c1",
+        "imageUrl": "https://www.sciencedaily.com/images/1920/precision-targeting-cancer-cells.webp",
+        "link": "https://www.sciencedaily.com/releases/2025/11/251111010008.htm",
+        "timestamp": "DateTime.now().millisecondsSinceEpoch",
+        "title": "A rare, fleeting element may become medicine’s most precise cancer killer."
+      },
+      "c2": {
+        "description": "As Rates of Some Cancers Increase in Younger People, Researchers Search for Answers",
+        "id": "c2",
+        "imageUrl": "https://www.cancer.gov/sites/g/files/xnrzdm211/files/styles/cgov_article/public/cgov_image/media_image/2025-05/Cancer%20Currents-Young%20man%20with%20doctor-iStock.jpg?itok=2qEUQJdZ",
+        "link": "https://www.cancer.gov/news-events/cancer-currents-blog/2025/early-onset-cancer-research-environment-genetics-support",
+        "timestamp": 1699500000000,
+        "title": "With rates of some cancers increasing among people under the age of 50"
+      },
+      "c3": {
+        "description": "The Effects of Cancer on Family Life",
+        "id": "c3",
+        "imageUrl": "https://www.shutterstock.com/shutterstock/videos/1108018849/thumb/1.jpg?ip=x480",
+        "link": "https://www.news-medical.net/health/The-Effects-of-Cancer-on-Family-Life.aspx",
+        "timestamp": 1699000000000,
+        "title": "Drug X reduces side effects"
+      },
+      "c4": {
+        "description": "Innovations for improved lung cancer outcomes",
+        "id": "c4",
+        "imageUrl": "https://www.mayoclinic.org/-/media/kcms/gbs/medical-professionals/images/2025/10/30/14/23/lung-cancer-767x535.jpg",
+        "link": "https://www.mayoclinic.org/medical-professionals/cancer/news/innovations-for-improved-lung-cancer-outcomes/mac-20591345",
+        "timestamp": 1698500000000,
+        "title": "Lifestyle & cancer risk meta-analysis"
+      },
+      "c5": {
+        "description": "The deadliest cancer your rarely notice",
+        "id": "c5",
+        "imageUrl": "https://static.toiimg.com/thumb/msid-125479463,imgsize-627948,width-400,resizemode-4/the-deadliest-cancer-you-rarely-notice-doctor-explains-why-pancreatic-cancer-is-so-hard-to-catch.jpg",
+        "link": "https://timesofindia.indiatimes.com/life-style/health-fitness/health-news/the-deadliest-cancer-you-rarely-notice-doctor-explains-why-pancreatic-cancer-is-so-hard-to-catch/articleshow/125479473.cms",
+        "timestamp": 1698000000000,
+        "title": "Doctor explains why pancreatic cancer is so hard to catch"
+      }
+    },
+    "education": {
+      "breast_cancer": {
+        "details": "Symptoms: Lump, change in shape, nipple discharge.\nTreatment: Surgery, chemotherapy, radiation, hormone therapy.\nPrevention: Regular screening (mammograms), healthy lifestyle.",
+        "id": "breast_cancer",
+        "moreLink": "https://www.cancer.org/cancer/breast-cancer.html",
+        "short": "Common in women; early screening helps.",
+        "title": "Breast Cancer"
+      },
+      "colorectal_cancer": {
+        "details": "Symptoms: Blood in stool, change in bowel habits, weight loss.\nTreatment: Surgery, chemotherapy.\nPrevention: High-fiber diet, screenings.",
+        "id": "colorectal_cancer",
+        "moreLink": "https://www.cancer.org/cancer/colon-rectal-cancer.html",
+        "short": "Screenings (colonoscopies) useful for early detection.",
+        "title": "Colorectal Cancer"
+      },
+      "lung_cancer": {
+        "details": "Symptoms: Persistent cough, breathlessness, chest pain.\nTreatment: Surgery, targeted therapy, immunotherapy.\nPrevention: Avoid smoking, reduce exposure to pollutants.",
+        "id": "lung_cancer",
+        "moreLink": "https://www.cancer.org/cancer/lung-cancer.html",
+        "short": "Often linked to smoking and air pollutants.",
+        "title": "Lung Cancer"
+      },
+      "prostate_cancer": {
+        "details": "Symptoms: Urinary changes, pelvic discomfort.\nTreatment: Active surveillance, surgery, radiation.\nPrevention: Regular check-ups.",
+        "id": "prostate_cancer",
+        "moreLink": "https://www.cancer.org/cancer/prostate-cancer.html",
+        "short": "Common in older men; monitor PSA levels.",
+        "title": "Prostate Cancer"
+      }
+    },
+    "feed": {
+      "a1": {
+        "description": "Cancer physician shares 5 morning habits that reduce cancer risks",
+        "id": "a1",
+        "imageUrl": "https://www.hindustantimes.com/ht-img/img/2025/11/23/550x309/lentilss_1755179623897_1763883008013.jpg",
+        "link": "https://www.hindustantimes.com/lifestyle/health/cancer-physician-shares-5-morning-habits-that-reduce-cancer-risks-and-promote-long-term-health-20-30-minutes-of-101763882961009.html",
+        "timestamp": 1698000000000,
+        "title": "Study: diet and cancer risk"
+      },
+      "a2": {
+        "description": "4 tests for early Cancer detection",
+        "id": "a2",
+        "imageUrl": "https://static.toiimg.com/thumb/125517405.jpg?imgsize=889128&photoid=125517405&width=600&height=335&resizemode=75",
+        "link": "https://timesofindia.indiatimes.com/life-style/health-fitness/4-tests-for-early-cancer-detection-as-revealed-by-top-doc/photostory/125517401.cms",
+        "timestamp": 1697500000000,
+        "title": "Radiation therapy: latest protocols"
+      },
+      "a3": {
+        "description": "Common blood pressure drug may help slow aggressive brain cancer",
+        "id": "a3",
+        "imageUrl": "https://img.lb.wbmdstatic.com/vim/live/webmd/consumer_assets/site_images/article_thumbnails/features/_2022/08_2022/innovations_in_hormone_based_birth_control_features/1800x1200_getty_rf_innovations_in_hormone_based_birth_control_features.jpg",
+        "link": "https://www.medicalnewstoday.com/articles/common-blood-pressure-drug-may-help-slow-aggressive-brain-cancer",
+        "timestamp": 1697000000000,
+        "title": "Palliative care resources expanded"
+      }
+    }
+  },
+  "bookmarks": {
+    "AtGJXTeAIMSBgW91qoalbAB4FQ02": {
+      "a1": {
+        "link": "https://example.com/article/diet-and-cancer",
+        "savedAt": 1763809988424,
+        "title": "Study: diet and cancer risk"
+      },
+      "breast_cancer": {
+        "link": "https://www.cancer.org/cancer/breast-cancer.html",
+        "savedAt": 1763809950253,
+        "title": "Breast Cancer"
+      },
+      "colorectal_cancer": {
+        "link": "https://www.cancer.org/cancer/colon-rectal-cancer.html",
+        "savedAt": 1763809966347,
+        "title": "Colorectal Cancer"
+      }
+    }
+  },
+  "caregivers": {
+    "-OefUZvbxag1U17B1qq2": {
+      "createdAt": 1763813778948,
+      "id": "-OefUZvbxag1U17B1qq2",
+      "linkedPatientId": "-OefUEPVb9yc1MmakfyO",
+      "name": "caregiver",
+      "phone": "9876543210"
+    }
+  },
+  "patients": {
+    "-OefUEPVb9yc1MmakfyO": {
+      "age": 40,
+      "appointments": {
+        "-OefUQHzqX7l-DkNSmsP": {
+          "datetime": 1763883000000,
+          "id": "-OefUQHzqX7l-DkNSmsP",
+          "notes": "",
+          "status": "scheduled"
+        }
+      },
+      "caregiverId": "-OefUZvbxag1U17B1qq2",
+      "chemoHistory": {
+        "-OefUTB8Jvp_JphcIsNw": {
+          "completed": true,
+          "date": 1763231400000,
+          "id": "-OefUTB8Jvp_JphcIsNw",
+          "notes": ""
+        }
+      },
+      "clinicianId": "AtGJXTeAIMSBgW91qoalbAB4FQ02",
+      "createdAt": 1763813690815,
+      "diagnosis": "cancer",
+      "gender": "Female",
+      "id": "-OefUEPVb9yc1MmakfyO",
+      "name": "patient",
+      "needsFollowUp": false,
+      "updatedAt": 1763813779227
+    }
+  },
+  "users": {
+    "AtGJXTeAIMSBgW91qoalbAB4FQ02": {
+      "createdAt": "2025-11-22T16:41:51.909025",
+      "email": "doctor@gmail.com",
+      "name": "doctor",
+      "role": "clinician",
+      "uid": "AtGJXTeAIMSBgW91qoalbAB4FQ02"
+    },
+    "dtWIoSWrSFPsdXER8n70LCiGaru1": {
+      "createdAt": "2025-11-22T22:36:10.535222",
+      "email": "patient@gmail.com",
+      "name": "patient",
+      "role": "patient",
+      "uid": "dtWIoSWrSFPsdXER8n70LCiGaru1"
+    },
+    "lx3wCRBrGgNS3E1Z1HZy8ci44ml1": {
+      "createdAt": "2025-11-22T18:48:17.727590",
+      "email": "caregiver@gmail.com",
+      "name": "caregiver",
+      "role": "caregiver",
+      "uid": "lx3wCRBrGgNS3E1Z1HZy8ci44ml1"
+    }
+  }
+}

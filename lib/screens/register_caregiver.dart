@@ -1,6 +1,6 @@
 // register_caregiver.dart
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
+import '../services/database_service.dart';
 
 class RegisterCaregiverScreen extends StatefulWidget {
   final String patientId;
@@ -11,28 +11,47 @@ class RegisterCaregiverScreen extends StatefulWidget {
 }
 
 class _RegisterCaregiverScreenState extends State<RegisterCaregiverScreen> {
+  final _formKey = GlobalKey<FormState>();
   final _name = TextEditingController();
   final _phone = TextEditingController();
+  final _email = TextEditingController();
   bool _loading = false;
-  final _db = FirebaseDatabase.instance;
+  String? _error;
 
   Future<void> _create() async {
-    if (_name.text.trim().isEmpty) return;
-    setState(() => _loading = true);
-    final ref = _db.ref('caregivers').push();
-    final id = ref.key ?? '';
-    await ref.set({
-      'id': id,
-      'name': _name.text.trim(),
-      'phone': _phone.text.trim(),
-      'linkedPatientId': widget.patientId,
-      'createdAt': ServerValue.timestamp
+    if (!_formKey.currentState!.validate()) return;
+    
+    setState(() {
+      _loading = true;
+      _error = null;
     });
-    await _db.ref('patients/${widget.patientId}').update({'caregiverId': id, 'updatedAt': ServerValue.timestamp});
-    setState(() => _loading = false);
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Caregiver registered')));
-      Navigator.of(context).pop();
+
+    try {
+      final caregiverId = await DatabaseService.createCaregiver(
+        name: _name.text.trim(),
+        phone: _phone.text.trim(),
+        email: _email.text.trim().isEmpty ? null : _email.text.trim(),
+        linkedPatientId: widget.patientId,
+      );
+
+      if (caregiverId == null) {
+        throw Exception('Failed to create caregiver');
+      }
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Caregiver registered successfully')),
+        );
+        Navigator.of(context).pop();
+      }
+    } catch (e) {
+      setState(() {
+        _error = e.toString();
+      });
+    } finally {
+      if (mounted) {
+        setState(() => _loading = false);
+      }
     }
   }
 
@@ -40,6 +59,7 @@ class _RegisterCaregiverScreenState extends State<RegisterCaregiverScreen> {
   void dispose() {
     _name.dispose();
     _phone.dispose();
+    _email.dispose();
     super.dispose();
   }
 
@@ -47,15 +67,61 @@ class _RegisterCaregiverScreenState extends State<RegisterCaregiverScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Register Caregiver')),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(children: [
-          TextField(controller: _name, decoration: const InputDecoration(labelText: 'Name')),
-          const SizedBox(height: 8),
-          TextField(controller: _phone, decoration: const InputDecoration(labelText: 'Phone')),
-          const SizedBox(height: 12),
-          ElevatedButton(onPressed: _loading ? null : _create, child: _loading ? const CircularProgressIndicator() : const Text('Create'))
-        ]),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              children: [
+                TextFormField(
+                  controller: _name,
+                  decoration: const InputDecoration(
+                    labelText: 'Name',
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                  validator: (v) => (v == null || v.trim().isEmpty) ? 'Enter name' : null,
+                ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _phone,
+                  decoration: const InputDecoration(
+                    labelText: 'Phone',
+                    prefixIcon: Icon(Icons.phone),
+                  ),
+                  keyboardType: TextInputType.phone,
+                  validator: (v) => (v == null || v.trim().isEmpty) ? 'Enter phone' : null,
+                ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _email,
+                  decoration: const InputDecoration(
+                    labelText: 'Email (optional)',
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                const SizedBox(height: 16),
+                if (_error != null) ...[
+                  Text(
+                    _error!,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                  const SizedBox(height: 8),
+                ],
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _loading ? null : _create,
+                    child: _loading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text('Register Caregiver'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+import '../services/database_service.dart';
+import '../services/auth_service.dart';
 
 class AddPatientScreen extends StatefulWidget {
   const AddPatientScreen({super.key});
@@ -14,13 +15,15 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
   final _nameController = TextEditingController();
   final _ageController = TextEditingController();
   final _diagnosisController = TextEditingController();
+  final _conditionSummaryController = TextEditingController();
+  final _patientUserUidController = TextEditingController(); // NEW
+
   String _gender = 'Female';
 
   bool _loading = false;
   String? _errorText;
 
   final _auth = FirebaseAuth.instance;
-  final _db = FirebaseDatabase.instance;
 
   Future<void> _save() async {
     if (!_formKey.currentState!.validate()) return;
@@ -36,34 +39,57 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
         throw Exception('User is not logged in');
       }
 
-      // Check role from /users/<uid>/role
-      final roleSnap = await _db.ref('users/${user.uid}/role').get();
-      final role = roleSnap.value?.toString() ?? '';
-      if (role.toLowerCase() != 'clinician' && role.toLowerCase() != 'doctor') {
-        throw Exception('Only clinicians can add patients. Current role: $role');
+      // Check role
+      final role = await AuthService.getUserRole(user.uid);
+      if (role == null ||
+          (role.toLowerCase() != 'clinician' &&
+              role.toLowerCase() != 'doctor')) {
+        throw Exception(
+            'Only clinicians can add patients. Current role: $role');
       }
-
-      final patientsRef = _db.ref('patients');
-      final newRef = patientsRef.push();
-      final id = newRef.key ?? '';
 
       final int? age = _ageController.text.trim().isEmpty
           ? null
           : int.tryParse(_ageController.text.trim());
 
-      final data = <String, dynamic>{
-        'id': id,
-        'name': _nameController.text.trim(),
-        'age': age,
-        'gender': _gender,
-        'diagnosis': _diagnosisController.text.trim(),
-        'clinicianId': user.uid,
-        'createdAt': ServerValue.timestamp,
-        'updatedAt': ServerValue.timestamp,
-        'needsFollowUp': false,
-      };
+      // 1) Create patient record
+      final patientId = await DatabaseService.createPatient(
+        clinicianId: user.uid,
+        name: _nameController.text.trim(),
+        age: age,
+        gender: _gender,
+        diagnosis: _diagnosisController.text.trim(),
+        conditionSummary: _conditionSummaryController.text.trim(),
+      );
 
-      await newRef.set(data);
+      if (patientId == null) {
+        throw Exception('Failed to create patient');
+      }
+
+      // 2) Optionally link to a patient user account (for chat + dashboard)
+      final patientUserUid = _patientUserUidController.text.trim();
+      if (patientUserUid.isNotEmpty) {
+        final patientUser = await DatabaseService.getUser(patientUserUid);
+        if (patientUser == null) {
+          throw Exception(
+              'Patient created, but no user found with UID: $patientUserUid');
+        }
+
+        // This will set:
+        //  - patients/<patientId>/patientUserUid
+        //  - users/<patientUserUid>/linkedPatientId
+        //  - patients/<patientId>/clinicianId (already set, but harmless)
+        final ok = await DatabaseService.linkCareTeam(
+          patientId: patientId,
+          patientUserUid: patientUserUid,
+          clinicianUid: user.uid,
+        );
+
+        if (!ok) {
+          throw Exception(
+              'Patient created, but linking to user account failed.');
+        }
+      }
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -71,7 +97,6 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
       );
       Navigator.of(context).pop();
     } catch (e) {
-      // SHOW the actual error on screen
       setState(() {
         _errorText = e.toString();
       });
@@ -87,6 +112,8 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
     _nameController.dispose();
     _ageController.dispose();
     _diagnosisController.dispose();
+    _conditionSummaryController.dispose();
+    _patientUserUidController.dispose(); // NEW
     super.dispose();
   }
 
@@ -144,6 +171,28 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                   ),
                   maxLines: 2,
                 ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _conditionSummaryController,
+                  decoration: const InputDecoration(
+                    labelText: 'Condition Summary (optional)',
+                    prefixIcon: Icon(Icons.description),
+                  ),
+                  maxLines: 3,
+                ),
+                const SizedBox(height: 12),
+
+                // NEW: optional link to a patient user account
+                TextFormField(
+                  controller: _patientUserUidController,
+                  decoration: const InputDecoration(
+                    labelText: 'Patient user UID (optional)',
+                    prefixIcon: Icon(Icons.account_circle),
+                    helperText:
+                    'Link to an existing patient login account so they can use the app and chat.',
+                  ),
+                ),
+
                 const SizedBox(height: 16),
                 if (_errorText != null) ...[
                   Text(
